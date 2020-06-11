@@ -14,18 +14,12 @@ export default (Button = props => {
     textColor,
   } = props;
 
-  if (!title) {
-    throw new Error('No title added!');
-  }
+  if (!title) return new Error('No title added!');
 
-  let HEIGHT = large ? 60 : 40;
+  const HEIGHT = large ? 60 : height ? height : 40;
   const WIDTH = width ? width : 200;
-  let BACKGROUND_COLOR = secondary ? 'red' : 'blue';
-  let TEXT_COLOR = 'white';
-
-  if (height) HEIGHT = height;
-  if (baseColor) BACKGROUND_COLOR = baseColor;
-  if (textColor) TEXT_COLOR = textColor;
+  const BACKGROUND_COLOR = secondary ? 'red' : baseColor ? baseColor : 'blue';
+  const TEXT_COLOR = textColor ? textColor : 'white';
 
   return (
     <TouchableOpacity
